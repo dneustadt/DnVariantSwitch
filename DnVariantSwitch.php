@@ -2,6 +2,7 @@
 
 namespace DnVariantSwitch;
 
+use Shopware\Components\Plugin;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Shopware\Components\Plugin\Context\ActivateContext;
 use Shopware\Components\Plugin\Context\InstallContext;
@@ -11,7 +12,7 @@ use Shopware\Components\Plugin\Context\UpdateContext;
  * Class DnVariantSwitch
  * @package DnVariantSwitch
  */
-class DnVariantSwitch extends \Shopware\Components\Plugin
+class DnVariantSwitch extends Plugin
 {
     /**
      * @param ContainerBuilder $container
