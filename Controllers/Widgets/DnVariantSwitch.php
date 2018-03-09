@@ -8,6 +8,14 @@ class Shopware_Controllers_Widgets_DnVariantSwitch extends \Enlight_Controller_A
         $articleID = $this->Request()->get('articleId');
         $number = $this->Request()->get('number');
 
+        $context = $this->get('shopware_storefront.context_service')->getShopContext();
+        $product = $this->get('shopware_storefront.list_product_service')->get($number, $context);
+
+        /** @var \Shopware\Bundle\StoreFrontBundle\Struct\ListProduct $product */
+        if (!$product->hasConfigurator()) {
+            return;
+        }
+
         $this->view->hasActiveVariants = true;
 
         $this->view->basketID = $basketID;
@@ -20,7 +28,7 @@ class Shopware_Controllers_Widgets_DnVariantSwitch extends \Enlight_Controller_A
         $this->get('front')->Plugins()->ViewRenderer()->setNoRender();
 
         $number = $this->Request()->get('sAdd');
-        $quantity = (int)$this->Request()->get('sQuantity', 1);
+        $quantity = (int)$this->Request()->get('sQuantity');
         $basketID = (int)$this->Request()->get('detailId');
 
         if(!empty($number) && !empty($basketID)){
