@@ -98,7 +98,9 @@
             var me = this,
                 data = $(event.target).serialize();
 
-            $.loadingIndicator.open();
+            $.loadingIndicator.open({
+                renderElement: '.switch-variant--modal .content'
+            });
 
             $.ajax({
                 'data': data + '&detailId=' + me.opts.detailId,
@@ -140,10 +142,23 @@
         ['xs', 's', 'm', 'l', 'xl']
     );
 
+    $.subscribe("plugin/swAjaxVariant/onBeforeRequestData", function(e, me) {
+        var $el = $('.switch-variant--modal');
+
+        if ($el.length) {
+            $.loadingIndicator.close();
+            $.loadingIndicator.open({
+                renderElement: '.switch-variant--modal .content'
+            });
+        }
+    });
+
     $.subscribe("plugin/swAjaxVariant/onRequestData", function(e, me) {
         var $el = $('.switch-variant--modal');
 
         if ($el.length) {
+            $.loadingIndicator.close();
+
             var $buyboxForm = $el.find('*[data-add-article="true"]'),
                 plugin = $('*[data-variant-switch="true"]').data('plugin_dnVariantSwitch');
 
