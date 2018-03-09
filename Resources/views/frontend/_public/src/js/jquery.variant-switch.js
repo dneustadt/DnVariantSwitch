@@ -72,12 +72,6 @@
                        return target;
                     };
 
-                    window.StateManager.addPlugin(
-                        '.switch-variant--modal select:not([data-no-fancy-select="true"])',
-                        'swSelectboxReplacement',
-                        ['xs', 's', 'm', 'l', 'xl']
-                    );
-
                     var $modal = $('.switch-variant--modal'),
                         $buyboxForm = $modal.find('*[data-add-article="true"]');
 
