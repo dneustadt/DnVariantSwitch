@@ -39,6 +39,8 @@
                 target = me.opts.productUrl,
                 query = me.opts.productQuery;
 
+            $.loadingIndicator.open();
+
             $.ajax({
                 url: target + query,
                 type: "GET",
@@ -47,12 +49,14 @@
                     var $response = $($.parseHTML(response, document, true)),
                         $detail = $response.find('.product--detail-upper');
 
+                    $.loadingIndicator.close();
+
                     if (!$detail) {
                         return;
                     }
 
                     $.modal.open(
-                        '<div class="product--details" data-ajax-variants-container="true">' +
+                        '<div class="product--details ajax-modal--custom" data-ajax-variants-container="true">' +
                         $detail[0].outerHTML +
                         '</div>',
                         me.opts.modal
@@ -69,7 +73,7 @@
                     };
 
                     window.StateManager.addPlugin(
-                        '*[data-predecessor-select="true"]',
+                        '.switch-variant--modal select:not([data-no-fancy-select="true"])',
                         'swSelectboxReplacement',
                         ['xs', 's', 'm', 'l', 'xl']
                     );
