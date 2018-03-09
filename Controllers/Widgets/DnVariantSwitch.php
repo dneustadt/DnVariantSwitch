@@ -32,7 +32,12 @@ class Shopware_Controllers_Widgets_DnVariantSwitch extends \Enlight_Controller_A
         $basketID = (int)$this->Request()->get('detailId');
 
         if(!empty($number) && !empty($basketID)){
-            $this->get('dn.variant_switch')->switchVariant($number, $basketID, $quantity);
+            $this->get('dn.variant_switch')->switchVariant(
+                $number,
+                $basketID,
+                $this->get('modules')->Basket(),
+                $quantity
+            );
         }
 
         $this->Response()->setBody(json_encode(array('success' => true)));

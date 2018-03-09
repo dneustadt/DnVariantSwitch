@@ -42,7 +42,12 @@ class VariantSwitch implements VariantSwitchInterface
     /**
      * @inheritdoc
      */
-    public function switchVariant($number, $basketID, $quantity = 1)
+    public function switchVariant(
+        $number,
+        $basketID,
+        \sBasket $sBasket,
+        $quantity = 1
+    )
     {
         /** @var \Shopware\Models\Order\Basket $basket */
         $basket = $this->models->getRepository('Shopware\Models\Order\Basket')->find($basketID);

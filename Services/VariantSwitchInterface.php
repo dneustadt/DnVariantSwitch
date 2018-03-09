@@ -12,9 +12,15 @@ interface VariantSwitchInterface
     /**
      * @param string $number
      * @param int $basketID
+     * @param \sBasket $sBasket
      * @param int $quantity
      * @return mixed
      */
-    public function switchVariant($number, $basketID, $quantity);
+    public function switchVariant(
+        $number,
+        $basketID,
+        \sBasket $sBasket,
+        $quantity
+    );
 
 }
