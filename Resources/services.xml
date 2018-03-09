@@ -8,6 +8,7 @@
         <service id="dn_variant_switch.subscriber.template_registration" class="DnVariantSwitch\Subscriber\TemplateRegistration">
             <argument>%dn_variant_switch.plugin_dir%</argument>
             <argument type="service" id="template"/>
+            <argument type="service" id="snippets"/>
             <tag name="shopware.event_subscriber"/>
         </service>
 

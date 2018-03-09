@@ -22,13 +22,25 @@ class TemplateRegistration implements SubscriberInterface
     private $templateManager;
 
     /**
+     * @var \Shopware_Components_Snippet_Manager
+     */
+    private $snippetManager;
+
+    /**
+     * TemplateRegistration constructor.
      * @param $pluginDirectory
      * @param \Enlight_Template_Manager $templateManager
+     * @param \Shopware_Components_Snippet_Manager $snippetManager
      */
-    public function __construct($pluginDirectory, \Enlight_Template_Manager $templateManager)
+    public function __construct(
+        $pluginDirectory,
+        \Enlight_Template_Manager $templateManager,
+        \Shopware_Components_Snippet_Manager $snippetManager
+    )
     {
         $this->pluginDirectory = $pluginDirectory;
         $this->templateManager = $templateManager;
+        $this->snippetManager = $snippetManager;
     }
 
     /**
@@ -45,6 +57,7 @@ class TemplateRegistration implements SubscriberInterface
     public function onPreDispatch()
     {
         $this->templateManager->addTemplateDir($this->pluginDirectory . '/Resources/views');
+        $this->snippetManager->addConfigDir($this->pluginDirectory . '/Resources/snippets/');
     }
 
     /**

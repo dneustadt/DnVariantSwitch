@@ -19,6 +19,7 @@
 
             me.opts.modal = $.extend({}, Object.create($.modal.defaults), me.opts);
             me.opts.modal.additionalClass = 'switch-variant--modal';
+            me.opts.modal.width = 1024;
 
             me.registerEvents();
         },
