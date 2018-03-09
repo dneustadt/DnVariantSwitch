@@ -14,6 +14,7 @@
 
         <service id="dn.variant_switch" class="DnVariantSwitch\Services\VariantSwitch">
             <argument type="service" id="models" />
+            <argument type="service" id="session" />
             <argument type="service" id="shopware_storefront.context_service" />
             <argument type="service" id="shopware_storefront.list_product_service" />
             <argument type="service" id="shopware_storefront.additional_text_service" />

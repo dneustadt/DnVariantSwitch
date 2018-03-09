@@ -17,6 +17,9 @@ class VariantSwitch implements VariantSwitchInterface
     /** @var ModelManager */
     private $models;
 
+    /** @var \Enlight_Components_Session_Namespace */
+    private $session;
+
     /** @var ContextServiceInterface */
     private $context;
 
@@ -26,14 +29,24 @@ class VariantSwitch implements VariantSwitchInterface
     /** @var AdditionalTextServiceInterface */
     private $additionalTextService;
 
+    /**
+     * VariantSwitch constructor.
+     * @param ModelManager $models
+     * @param \Enlight_Components_Session_Namespace $session
+     * @param ContextServiceInterface $contextService
+     * @param ListProductServiceInterface $listProductService
+     * @param AdditionalTextServiceInterface $additionalTextService
+     */
     public function __construct(
         ModelManager $models,
+        \Enlight_Components_Session_Namespace $session,
         ContextServiceInterface $contextService,
         ListProductServiceInterface $listProductService,
         AdditionalTextServiceInterface $additionalTextService
     )
     {
         $this->models = $models;
+        $this->session = $session;
         $this->context = $contextService;
         $this->listProductService = $listProductService;
         $this->additionalTextService = $additionalTextService;
@@ -51,6 +64,11 @@ class VariantSwitch implements VariantSwitchInterface
     {
         /** @var \Shopware\Models\Order\Basket $basket */
         $basket = $this->models->getRepository('Shopware\Models\Order\Basket')->find($basketID);
+
+        if ($basket->getSessionId() !== $this->session->get('sessionId')) {
+            return;
+        }
+
         $basket->setOrderNumber($number);
 
         $context = $this->context->getProductContext();
