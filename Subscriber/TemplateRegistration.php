@@ -67,6 +67,7 @@ class TemplateRegistration implements SubscriberInterface
     public function addJsFiles(\Enlight_Event_EventArgs $args)
     {
         $jsFiles = [
+            $this->pluginDirectory . '/Resources/views/frontend/_public/src/js/jquery.off-canvas-variant-switch.js',
             $this->pluginDirectory . '/Resources/views/frontend/_public/src/js/jquery.variant-switch.js',
         ];
 
