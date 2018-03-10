@@ -48,7 +48,8 @@
                 dataType: "html",
                 success: function (response) {
                     var $response = $($.parseHTML(response, document, true)),
-                        $detail = $response.find('.product--detail-upper');
+                        $detail = $response.find('.product--detail-upper'),
+                        index = me.$el.index($('.content--variant-switch-form'));
 
                     $.loadingIndicator.close();
 
@@ -57,7 +58,7 @@
                     }
 
                     $.modal.open(
-                        '<div class="product--details ajax-modal--custom" data-ajax-variants-container="true">' +
+                        '<div class="product--details ajax-modal--custom" data-index="' + index + '" data-ajax-variants-container="true">' +
                         $detail[0].outerHTML +
                         '</div>',
                         me.opts.modal
@@ -164,13 +165,14 @@
     });
 
     $.subscribe("plugin/swAjaxVariant/onRequestData", function(e, me) {
-        var $el = $('.switch-variant--modal');
+        var $el = $('.switch-variant--modal'),
+            index = me.$el.data('index');
 
         if ($el.length) {
             $.loadingIndicator.close();
 
             var $buyboxForm = $el.find('*[data-add-article="true"]'),
-                plugin = $('*[data-variant-switch="true"]').data('plugin_dnVariantSwitch');
+                plugin = $($('*[data-variant-switch="true"]').get(index)).data('plugin_dnVariantSwitch');
 
             if (!$el.length) {
                 return;
