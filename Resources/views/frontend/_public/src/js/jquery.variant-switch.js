@@ -76,12 +76,12 @@
                         ['xs', 's', 'm', 'l', 'xl']
                     );
 
-                    $('*[data-ajax-variants-container="true"]').data('plugin_swAjaxVariant')._getUrl = function () {
-                       return target;
-                    };
-
                     var $modal = $('.switch-variant--modal'),
                         $buyboxForm = $modal.find('*[data-add-article="true"]');
+
+                    $modal.find('*[data-ajax-variants-container="true"]').data('plugin_swAjaxVariant')._getUrl = function () {
+                       return target;
+                    };
 
                     if (!$buyboxForm) {
                         return;
