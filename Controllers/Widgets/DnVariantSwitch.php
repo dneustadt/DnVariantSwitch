@@ -7,12 +7,13 @@ class Shopware_Controllers_Widgets_DnVariantSwitch extends \Enlight_Controller_A
         $basketID = $this->Request()->get('basketId');
         $articleID = $this->Request()->get('articleId');
         $number = $this->Request()->get('number');
+        $offCanvas = $this->Request()->get('offCanvas');
 
         $context = $this->get('shopware_storefront.context_service')->getShopContext();
         $product = $this->get('shopware_storefront.list_product_service')->get($number, $context);
 
         /** @var \Shopware\Bundle\StoreFrontBundle\Struct\ListProduct $product */
-        if (!$product->hasConfigurator()) {
+        if (!$product || !$product->hasConfigurator()) {
             return;
         }
 
@@ -21,6 +22,7 @@ class Shopware_Controllers_Widgets_DnVariantSwitch extends \Enlight_Controller_A
         $this->view->basketID = $basketID;
         $this->view->articleID = $articleID;
         $this->view->number = $number;
+        $this->view->offCanvas = $offCanvas;
     }
 
     public function switchVariantAction()

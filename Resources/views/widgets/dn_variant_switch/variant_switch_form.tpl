@@ -5,8 +5,9 @@
           data-switchUrl="{url module="widgets" controller="DnVariantSwitch" action="switchVariant"}"
           data-detailId="{$basketID}"
           data-productUrl="{url controller="detail" sArticle=$articleID}"}
-          data-productQuery="?number={$number}&template=ajax">
-        <button class="btn is--small is--icon-right" type="submit" name="Submit" value="submit">
+          data-productQuery="?number={$number}&template=ajax"
+          data-offCanvas="{$offCanvas}">
+        <button class="btn is--small is--icon-right{if $offCanvas} right{/if}" type="submit" name="Submit" value="submit">
             {s name="ChangeVariant" namespace="frontend/plugins/dn/variantswitch"}Variante wechseln{/s} <i class="icon--shuffle"></i>
         </button>
     </form>
