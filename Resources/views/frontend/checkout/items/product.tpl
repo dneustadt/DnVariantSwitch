@@ -8,7 +8,8 @@
                     action="variantSwitchForm"
                     basketId=$sBasketItem.id
                     articleId=$sBasketItem.articleID
-                    number=$sBasketItem.ordernumber}
+                    number=$sBasketItem.ordernumber
+                    quantity=$sBasketItem.quantity}
         {/if}
     {/block}
 {/block}

@@ -13,6 +13,8 @@
 
             productQuery: '',
 
+            quantity: 1,
+
             offCanvas: false,
 
             modalWidth: 1024
@@ -90,6 +92,8 @@
                     }
 
                     me._on($buyboxForm, 'submit', $.proxy(me.onBuyboxSubmit, me));
+
+                    me.setBuyboxQuantity($buyboxForm);
                 }
             });
 
@@ -136,6 +140,19 @@
                     }
                 }
             });
+        },
+
+        setBuyboxQuantity: function ($buyboxForm) {
+            var me = this,
+                $sQuantity = $buyboxForm.find('#sQuantity');
+
+            if ($sQuantity) {
+                var $option = $sQuantity.find('option[value="' + me.opts.quantity + '"]');
+
+                if ($option) {
+                    $option.prop('selected', true);
+                }
+            }
         },
 
         onClose: function () {
@@ -195,6 +212,8 @@
                 plugin.onBuyboxSubmit,
                 plugin
             ));
+
+            plugin.setBuyboxQuantity($buyboxForm);
 
             me.hasHistorySupport = false;
             setTimeout(function(){

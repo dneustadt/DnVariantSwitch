@@ -8,6 +8,7 @@
             basketId: 0,
             articleId: 0,
             number: '',
+            quantity: 0,
             offCanvas: false
         },
 

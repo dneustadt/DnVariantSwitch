@@ -8,6 +8,7 @@
                  data-basketId="{$sBasketItem.id}"
                  data-articleId="{$sBasketItem.articleID}"
                  data-number="{$sBasketItem.ordernumber}"
+                 data-quantity="{$sBasketItem.quantity}"
                  data-offCanvas="true"></div>
         {/if}
     {/block}

@@ -6,6 +6,7 @@
           data-detailId="{$basketID}"
           data-productUrl="{url controller="detail" sArticle=$articleID}"
           data-productQuery="?number={$number}&template=ajax"
+          data-quantity="{$quantity}"
           data-offCanvas="{$offCanvas}">
         <button class="btn is--small is--icon-right{if $offCanvas} right{/if}" type="submit" name="Submit" value="submit">
             {s name="ChangeVariant" namespace="frontend/plugins/dn/variantswitch"}Variante wechseln{/s} <i class="icon--shuffle"></i>

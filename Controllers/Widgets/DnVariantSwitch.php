@@ -7,6 +7,7 @@ class Shopware_Controllers_Widgets_DnVariantSwitch extends \Enlight_Controller_A
         $basketID = $this->Request()->get('basketId');
         $articleID = $this->Request()->get('articleId');
         $number = $this->Request()->get('number');
+        $quantity = $this->Request()->get('quantity');
         $offCanvas = $this->Request()->get('offCanvas');
 
         $context = $this->get('shopware_storefront.context_service')->getShopContext();
@@ -22,6 +23,7 @@ class Shopware_Controllers_Widgets_DnVariantSwitch extends \Enlight_Controller_A
         $this->view->basketID = $basketID;
         $this->view->articleID = $articleID;
         $this->view->number = $number;
+        $this->view->quantity = $quantity;
         $this->view->offCanvas = $offCanvas;
     }
 
