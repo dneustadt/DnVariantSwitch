@@ -4,7 +4,7 @@
           data-variant-switch="true"
           data-switchUrl="{url module="widgets" controller="DnVariantSwitch" action="switchVariant"}"
           data-detailId="{$basketID}"
-          data-productUrl="{url controller="detail" sArticle=$articleID}"}
+          data-productUrl="{url controller="detail" sArticle=$articleID}"
           data-productQuery="?number={$number}&template=ajax"
           data-offCanvas="{$offCanvas}">
         <button class="btn is--small is--icon-right{if $offCanvas} right{/if}" type="submit" name="Submit" value="submit">

@@ -233,4 +233,20 @@
         );
     });
 
+    $.subscribe("plugin/swCollapseCart/onArticleAdded", function() {
+        window.StateManager.addPlugin(
+            '*[data-off-canvas-variant-switch="true"]',
+            'dnOffCanvasVariantSwitch',
+            ['xs', 's', 'm', 'l', 'xl']
+        );
+    });
+
+    $.subscribe("plugin/swCollapseCart/onRemoveArticleFinished", function() {
+        window.StateManager.addPlugin(
+            '*[data-off-canvas-variant-switch="true"]',
+            'dnOffCanvasVariantSwitch',
+            ['xs', 's', 'm', 'l', 'xl']
+        );
+    });
+
 })(jQuery, window);
