@@ -13,9 +13,7 @@
 
             productQuery: '',
 
-            offCanvas: false,
-
-            variantSwitchFormCls: '.content--variant-switch-form'
+            offCanvas: false
 
         },
 
@@ -57,7 +55,7 @@
                 success: function (response) {
                     var $response = $($.parseHTML(response, document, true)),
                         $detail = $response.find('.product--detail-upper'),
-                        index = me.$el.index($(me.opts.variantSwitchFormCls));
+                        index = $('*[data-variant-switch="true"]').index(me.$el);
 
                     $.loadingIndicator.close();
 
