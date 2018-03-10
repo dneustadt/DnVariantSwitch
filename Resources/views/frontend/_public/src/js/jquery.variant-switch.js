@@ -4,11 +4,19 @@
     $.plugin('dnVariantSwitch', {
 
         defaults: {
+
             switchUrl: '',
+
             detailId: 0,
+
             productUrl: '',
+
             productQuery: '',
-            offCanvas: false
+
+            offCanvas: false,
+
+            variantSwitchFormCls: '.content--variant-switch-form'
+
         },
 
         init: function () {
@@ -49,7 +57,7 @@
                 success: function (response) {
                     var $response = $($.parseHTML(response, document, true)),
                         $detail = $response.find('.product--detail-upper'),
-                        index = me.$el.index($('.content--variant-switch-form'));
+                        index = me.$el.index($(me.opts.variantSwitchFormCls));
 
                     $.loadingIndicator.close();
 
