@@ -13,7 +13,9 @@
 
             productQuery: '',
 
-            offCanvas: false
+            offCanvas: false,
+
+            modalWidth: 1024
 
         },
 
@@ -26,7 +28,7 @@
 
             me.opts.modal = $.extend({}, Object.create($.modal.defaults), me.opts);
             me.opts.modal.additionalClass = 'switch-variant--modal';
-            me.opts.modal.width = 1024;
+            me.opts.modal.width = me.opts.modalWidth;
 
             me.registerEvents();
         },
@@ -101,6 +103,7 @@
                 data = $(event.target).serialize();
 
             $.loadingIndicator.open({
+                closeOnClick: false,
                 renderElement: '.switch-variant--modal .content'
             });
 
@@ -159,12 +162,13 @@
         ['xs', 's', 'm', 'l', 'xl']
     );
 
-    $.subscribe("plugin/swAjaxVariant/onBeforeRequestData", function(e, me) {
+    $.subscribe("plugin/swAjaxVariant/onBeforeRequestData", function() {
         var $el = $('.switch-variant--modal');
 
         if ($el.length) {
             $.loadingIndicator.close();
             $.loadingIndicator.open({
+                closeOnClick: false,
                 renderElement: '.switch-variant--modal .content'
             });
         }
