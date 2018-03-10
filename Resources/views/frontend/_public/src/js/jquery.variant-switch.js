@@ -101,8 +101,6 @@
                 'method': 'GET',
                 'url': me.opts.switchUrl,
                 'success': function () {
-                    $.loadingIndicator.close();
-
                     if (window.location.href.includes("addArticle")) {
                         window.location.href = window.location.href.replace("addArticle", "cart");
                     } else {
