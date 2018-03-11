@@ -65,7 +65,7 @@ class VariantSwitch implements VariantSwitchInterface
         /** @var \Shopware\Models\Order\Basket $basket */
         $basket = $this->models->getRepository('Shopware\Models\Order\Basket')->find($basketID);
 
-        if ($basket->getSessionId() !== $this->session->get('sessionId')) {
+        if (!$basket || $basket->getSessionId() !== $this->session->get('sessionId')) {
             return;
         }
 
