@@ -17,7 +17,11 @@
 
             offCanvas: false,
 
-            modalWidth: 1024
+            modalWidth: 1024,
+
+            zIndex: 8001,
+
+            modalContentOuterCls: 'product--details ajax-modal--custom'
 
         },
 
@@ -68,9 +72,11 @@
                     }
 
                     $.modal.open(
-                        '<div class="product--details ajax-modal--custom" data-index="' + index + '" data-ajax-variants-container="true">' +
-                        $detail[0].outerHTML +
-                        '</div>',
+                        $('<div></div>')
+                            .prop('class', me.opts.modalContentOuterCls)
+                            .attr('data-index', index)
+                            .attr('data-ajax-variants-container', 'true')
+                            .append($detail[0].outerHTML)[0].outerHTML,
                         me.opts.modal
                     );
 
@@ -82,6 +88,8 @@
 
                     var $modal = $('.switch-variant--modal'),
                         $buyboxForm = $modal.find('*[data-add-article="true"]');
+
+                    $modal.css('zIndex', me.opts.zIndex);
 
                     $modal.find('*[data-ajax-variants-container="true"]').data('plugin_swAjaxVariant')._getUrl = function () {
                        return target;
