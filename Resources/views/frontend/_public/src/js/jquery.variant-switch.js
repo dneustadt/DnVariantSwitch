@@ -71,11 +71,15 @@
                         return;
                     }
 
+                    $detail.find('*[data-product-compare-add="true"]').parent('form').remove();
+                    $detail.find('*[data-show-tab="true"]').remove();
+
                     $.modal.open(
                         $('<div></div>')
                             .prop('class', me.opts.modalContentOuterCls)
                             .attr('data-index', index)
                             .attr('data-ajax-variants-container', 'true')
+                            .attr('data-ajax-wishlist', 'true')
                             .append($detail[0].outerHTML)[0].outerHTML,
                         me.opts.modal
                     );
