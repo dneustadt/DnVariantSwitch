@@ -74,8 +74,7 @@
                         return;
                     }
 
-                    $detail.find('*[data-product-compare-add="true"]').parent('form').remove();
-                    $detail.find('*[data-show-tab="true"]').remove();
+                    me.removeDetailElements($detail);
 
                     $.modal.open(
                         $('<div></div>')
@@ -171,6 +170,11 @@
             }
         },
 
+        removeDetailElements: function ($el) {
+            $el.find('*[data-product-compare-add="true"]').parent('form').remove();
+            $el.find('*[data-show-tab="true"]').remove();
+        },
+
         onClose: function () {
             var me = this;
 
@@ -234,6 +238,7 @@
                 plugin
             ));
 
+            plugin.removeDetailElements($modal);
             plugin.setBuyboxQuantity($buyboxForm);
 
             me.hasHistorySupport = false;
