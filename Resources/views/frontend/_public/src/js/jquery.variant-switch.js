@@ -35,6 +35,7 @@
             me.opts.modal = $.extend({}, Object.create($.modal.defaults), me.opts);
             me.opts.modal.additionalClass = 'switch-variant--modal';
             me.opts.modal.width = me.opts.modalWidth;
+            me.opts.modal.overlay = !me.opts.offCanvas;
 
             me.registerEvents();
         },
@@ -43,6 +44,8 @@
             var me = this;
 
             me._on(me.$el, 'submit', $.proxy(me.onSubmit, me));
+
+            $.subscribe(me.getEventName('plugin/swModal/onClose'), $.proxy(me.onClose, me));
 
             $.publish('plugin/dnVariantSwitch/onRegisterEvents', [ me ]);
         },
@@ -94,6 +97,7 @@
                         $buyboxForm = $modal.find('*[data-add-article="true"]');
 
                     $modal.css('zIndex', me.opts.zIndex);
+                    $modal.find('.modal--close').css('zIndex', 1001);
 
                     $modal.find('*[data-ajax-variants-container="true"]').data('plugin_swAjaxVariant')._getUrl = function () {
                        return target;
@@ -171,6 +175,9 @@
             var me = this;
 
             me._isOpened = false;
+            $.loadingIndicator.close();
+
+            $.publish('plugin/dnVariantSwitch/onClose', [ me ]);
         },
 
         destroy: function () {
@@ -179,6 +186,8 @@
             if (me._isOpened) {
                 $.modal.close();
             }
+
+            $.unsubscribe(me.getEventName('plugin/swModal/onClose'));
 
             me._destroy();
         }
