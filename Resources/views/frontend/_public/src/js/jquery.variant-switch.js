@@ -67,7 +67,7 @@
 
                     $.loadingIndicator.close();
 
-                    if (!$detail) {
+                    if (!$detail.length) {
                         return;
                     }
 
@@ -95,7 +95,7 @@
                        return target;
                     };
 
-                    if (!$buyboxForm) {
+                    if (!$buyboxForm.length) {
                         return;
                     }
 
@@ -154,7 +154,7 @@
             var me = this,
                 $sQuantity = $buyboxForm.find('#sQuantity');
 
-            if ($sQuantity) {
+            if ($sQuantity.length) {
                 var $option = $sQuantity.find('option[value="' + me.opts.quantity + '"]');
 
                 if ($option) {
@@ -209,7 +209,7 @@
             var $buyboxForm = $modal.find('*[data-add-article="true"]'),
                 plugin = $($('*[data-variant-switch="true"]').get(index)).data('plugin_dnVariantSwitch');
 
-            if (!$buyboxForm) {
+            if (!$buyboxForm.length) {
                 return;
             }
 
