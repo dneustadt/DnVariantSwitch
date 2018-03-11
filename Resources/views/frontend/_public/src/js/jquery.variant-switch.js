@@ -200,16 +200,16 @@
     });
 
     $.subscribe("plugin/swAjaxVariant/onRequestData", function(e, me) {
-        var $el = $('.switch-variant--modal'),
+        var $modal = $('.switch-variant--modal'),
             index = me.$el.data('index');
 
-        if ($el.length) {
+        if ($modal.length) {
             $.loadingIndicator.close();
 
-            var $buyboxForm = $el.find('*[data-add-article="true"]'),
+            var $buyboxForm = $modal.find('*[data-add-article="true"]'),
                 plugin = $($('*[data-variant-switch="true"]').get(index)).data('plugin_dnVariantSwitch');
 
-            if (!$el.length) {
+            if (!$buyboxForm) {
                 return;
             }
 
