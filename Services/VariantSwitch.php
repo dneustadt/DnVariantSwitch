@@ -81,7 +81,7 @@ class VariantSwitch implements VariantSwitchInterface
         $this->models->persist($basket);
         $this->models->flush();
 
-        Shopware()->Modules()->Basket()->sUpdateArticle($basketID, $quantity);
+        $sBasket->sUpdateArticle($basketID, $quantity);
     }
 
 }
