@@ -76,6 +76,7 @@ class VariantSwitch implements VariantSwitchInterface
         /** @var \Shopware\Bundle\StoreFrontBundle\Struct\ListProduct $product */
         $product = $this->additionalTextService->buildAdditionalText($product, $context);
 
+        $basket->setEsdArticle($product->getEsd() ? 1 : 0);
         $basket->setArticleName($product->getName() . ' ' . $product->getAdditional());
 
         $this->models->persist($basket);
