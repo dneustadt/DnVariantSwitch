@@ -1,5 +1,8 @@
 # Change product variants from basket
 
+[![Scrutinizer](https://scrutinizer-ci.com/g/dneustadt/DnVariantSwitch/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dneustadt/DnVariantSwitch/?branch=master)
+[![Travis CI](https://travis-ci.org/dneustadt/DnVariantSwitch.svg?branch=master)](https://travis-ci.org/dneustadt/DnVariantSwitch)
+
 This plugin for Shopware adds functionality to change the previously
 selected variant of a product within basket and checkout views.
 
