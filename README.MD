@@ -12,6 +12,15 @@ Users will no longer have to remove the article from the basket,
 find the desired article again and add another variant from the article
 page instead.
 
+## Installation
+
+* Clone this repository into a folder **DnVariantSwitch** within the **custom/plugins** directory of the Shopware installation.
+* Install the plugin through the Plugin-Manager within the Shopware backend.
+
+### Install with composer
+* Change to your root installation of shopware
+* Run command `composer require dneustadt/dn-variant-switch` and install and activate plugin with Plugin Manager 
+
 ## Requirements
 
 * Shopware 5.3.4 or higher
