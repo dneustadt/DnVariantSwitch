@@ -1,5 +1,7 @@
 # Change product variants from basket
 
+> **Discontinued** - migrated to [FroshVariantSwitch](https://github.com/FriendsOfShopware/FroshVariantSwitch)
+
 [![Scrutinizer](https://scrutinizer-ci.com/g/dneustadt/DnVariantSwitch/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dneustadt/DnVariantSwitch/?branch=master)
 [![Travis CI](https://travis-ci.org/dneustadt/DnVariantSwitch.svg?branch=master)](https://travis-ci.org/dneustadt/DnVariantSwitch)
 
